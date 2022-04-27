@@ -1,0 +1,12 @@
+{
+    "contacts":[
+        {"email": "dfee@gmail.com",
+        "id": "87cfd8b3-462b-4dcb-a23a-61bdcdcc1cd3",
+        "name": "TeamXYZ"},
+
+        {"email": "malJam@gmail.com",
+        "id": "d760c38c-8760-4604-830b-7e88eab56f2a",
+        "name": "Malvika Jammwal"}
+
+    ]
+}

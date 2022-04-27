@@ -2,27 +2,30 @@ import React from "react"
 //trying class component
 
 
-class AddContact extends React.Component{
-    constructor (){
-        super()
+class EditContact extends React.Component{
+    constructor (props){
+        super(props)
+
+        const {id, name, email} = props.location.state.contact;
         this.state ={
-            name:"",
-            email:"",
+            id:props.location.state.contact.id,
+            name,
+            email,
     
         }
-        this.add=this.add.bind(this)
+        this.update=this.update.bind(this)
 
     }
    
     
-    add=(e)=>{
+    update=(e)=>{
         e.preventDefault();
         if(this.state.name===" " || this.state.email===" "){
             alert("All fields are mandatory!")
             return;
         }
 
-        this.props.addContactHandler(this.state);
+        this.props.updateContactHandler(this.state);
         this.setState({name:"", email:""})
         this.props.history.push("/")
     }
@@ -31,8 +34,8 @@ class AddContact extends React.Component{
     render(){
         return (
             <div className="ui main">
-                <h2>Add Contact</h2>
-                <form className="ui form" onSubmit={this.add}>
+                <h2>Edit Contact</h2>
+                <form className="ui form" onSubmit={this.update}>
                     <div className="field">
                         <label>Name</label>
                         <input type= "text" name="name" placeholder="Name" value={this.state.name} onChange={(e)=>this.setState({name:e.target.value})}/>
@@ -43,7 +46,7 @@ class AddContact extends React.Component{
                         <input type="text" name="email" placeholder="Email" value={this.state.email} onChange={(e)=>this.setState({email:e.target.value})} />
 
                     </div>
-                    <button className="ui button blue">Add</button>
+                    <button className="ui button blue">Update</button>
 
                 </form>
 
@@ -54,4 +57,4 @@ class AddContact extends React.Component{
 }
 
 
-export default AddContact;
+export default EditContact;
